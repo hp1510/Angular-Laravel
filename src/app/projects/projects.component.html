@@ -1,0 +1,40 @@
+<h1>FORM</h1>
+<app-header></app-header>
+<div class="containers">
+        <div class="row">
+        <div class="col-md-6">
+        <form #userRegForm='ngForm' (ngSubmit)="userRegForm.form.valid && RegisterUser(userRegForm.value)" novalidate>
+        <h2 class="text-center">Project</h2>
+          
+        
+        <div class="form-group">
+            <input type="text" class="w3-input w3-border" placeholder="Project Name" name="project_name" [(ngModel)]="projectname" #proname="ngModel" [ngClass]="{ 'is-invalid': userRegForm.submitted && proname.invalid }" required>
+            <div *ngIf="userRegForm.submitted && proname.invalid" class="invalid-feedback">
+            
+                <div *ngIf="proname.errors.required" class="alert-danger">Project Name is required</div>
+            
+            </div>
+        
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="w3-input w3-section w3-border" placeholder="Description" name="description" [(ngModel)]="description" #desc="ngModel" [ngClass]="{ 'is-invalid': userRegForm.submitted && desc.invalid }" required> 
+            <div *ngIf="userRegForm.submitted && desc.invalid" class="invalid-feedback">
+            
+                <div *ngIf="desc.errors.required" class="alert-danger">Description is required</div>
+
+            </div>
+        
+        </div>
+       
+        <button class="w3-button w3-black w3-section" type="submit" >
+            <i class="fa fa-paper-plane"></i> SUBMIT
+        </button>
+        
+        </form>
+        
+        </div>
+        
+        </div>
+        </div>
+        <app-footer></app-footer>
