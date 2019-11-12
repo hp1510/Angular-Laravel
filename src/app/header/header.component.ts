@@ -10,11 +10,11 @@ import { ApiService } from '../api.service';
 })
 export class HeaderComponent implements OnInit {
   access_token;
+
   constructor(private toastr: ToastrService, private apiService: ApiService, private router:Router) { }
 
   ngOnInit() {
     this.access_token = localStorage.getItem('access_token');
-    
   }
 
   onClick(logout: Event): void {
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
       this.apiService.logout()
       this.toastr.success('Successfully Log Out...');
       this.router.navigateByUrl('');
+      location.reload();
 
   }
 
